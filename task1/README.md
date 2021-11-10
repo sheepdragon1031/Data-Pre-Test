@@ -9,5 +9,5 @@ In the project directory, you can run server:
 
 ## Before Available Scripts && Reset mysql settings
 
-### `yarn isntall`
+### `yarn install`
 ### `config/db.config.js`

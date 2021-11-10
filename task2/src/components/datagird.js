@@ -162,13 +162,7 @@ export default function StickyHeadTable({pageData, isPage}) {
   };
 
   const handleChangePage = (event, newPage) => {
-    if(event.target.localName === "svg"){
-      setPage(newPage);
-    }
-    else{
-      setPage(newPage - 1);
-    }
-   
+    setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -182,11 +176,20 @@ export default function StickyHeadTable({pageData, isPage}) {
       : (a, b) => orderBy === "minutes_per_game"? descendingComparator(b, a, orderBy):-descendingComparator(a, b, orderBy);
   }
   const descendingComparator = (a, b, orderBy) => {
-    
-    if(orderBy === "minutes_per_game"|| orderBy === "field_goals_attempted_per_game"){
-      const regex = new RegExp(`[0-9]{1,2}:[0-9]{2}`, 'gm');
+    console.log(orderBy === "name" || orderBy === "team_acronym" || orderBy === "team_name", );
+    if(orderBy === "name" || orderBy === "team_acronym" || orderBy === "team_name"){
+        if (b[orderBy] < a[orderBy]) {
+          return -1;
+        }
+        if (b[orderBy] > a[orderBy]) {
+          return 1;
+        }
+        return 0;
+    }
+    else if(orderBy === "minutes_per_game"){
+      // const regex = new RegExp(`[0-9]{1,2}:[0-9]{2}`, 'gm');
       // console.log(a[orderBy].search(regex) > -1 , b[orderBy].search(regex) > -1 );
-      if(a[orderBy].search(regex) > -1 && b[orderBy].search(regex) > -1 ){
+      // if(a[orderBy].search(regex) > -1 && b[orderBy].search(regex) > -1 ){
         const minA = parseInt(a[orderBy].split(':')[0]) * 60 + parseInt(a[orderBy].split(':')[1])
         const minB = parseInt(b[orderBy].split(':')[0]) * 60 + parseInt(b[orderBy].split(':')[1])
         // console.log(minA, a[orderBy], minB, b[orderBy]);
@@ -197,27 +200,18 @@ export default function StickyHeadTable({pageData, isPage}) {
           return 1;
         }
         return 0;
-      }
-      else{
-        if (b[orderBy] * 1 < a[orderBy] * 1) {
-          return -1;
-        }
-        if (b[orderBy] * 1 > a[orderBy] * 1) {
-          return 1;
-        }
-        return 0;
-      }
-      
+      // }
     }
     else{
-      if (b[orderBy] < a[orderBy]) {
+      if (b[orderBy] * 1 < a[orderBy] * 1) {
         return -1;
       }
-      if (b[orderBy] > a[orderBy]) {
+      if (b[orderBy] * 1 > a[orderBy] * 1) {
         return 1;
       }
       return 0;
     }
+   
   }
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
@@ -340,20 +334,7 @@ export default function StickyHeadTable({pageData, isPage}) {
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-          {/* <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.field}
-                align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.headerName}
-                </TableCell>
-              ))}
-              
-            </TableRow>
-          </TableHead> */}
+          
           <TableBody>
             {stableSort(rowData, getComparator(order, orderBy))
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -363,10 +344,11 @@ export default function StickyHeadTable({pageData, isPage}) {
                     onClick={()=>{
                       tableRowClick(row)
                     }}>
-                    {columns.map((column) => {
+                    {columns.map((column, index) => {
+                     
                       const value = row[column.field];
                       return (
-                        <TableCell key={column.field} align={column.align}>
+                        <TableCell key={column.field}  align={columns[index].numeric ? 'right' : 'left'}>
                           {value}
                         </TableCell>
                       );

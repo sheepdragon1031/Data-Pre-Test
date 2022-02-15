@@ -70,7 +70,6 @@ players.json內為nba球員名單，請以此份資料，搭配文件中的示�
 1. Header：左邊顯示LnData的logo(https://www.lndata.com/images/logo/logo_160.png)，右邊顯示Avatar示意圖
 2. Menu選單：顯示「Player List」功能
 3. Main Content：主畫面中有搜尋條件及表格兩個區塊，在搜尋條件中設定搜尋條件後送出，表格內會顯示相對應的資料。
-![](https://i.imgur.com/vOp928r.png)
 
 ### 系統需求
 1. 表格可排序，排序欄位如示意圖所示，預設以Points欄位排序，最高的在最前面，資料預設為顯示全部球員名單。
@@ -80,11 +79,7 @@ players.json內為nba球員名單，請以此份資料，搭配文件中的示�
  + keywords -> 可輸入關鍵字比對球員名稱(部分比對)
 4. 按下「Search」按鈕後依照搜尋條件顯示符合條件的資料於表格中。
 5. 按下每筆資料的Detail圖示，會跳至另一頁面顯示該球員的所有詳細資料，如以下示意圖，顯示的欄位名稱與資料key值對應關係請參閱下方對應表。
-![](https://i.imgur.com/o76uYrR.png)
-
 6. 按下「Show Charts」按鈕後，會跳出視窗，以圓餅圖或柱狀圖(會是其他形式的圖表)，顯示球員人數在15人以下(含15人)的球隊的統計資料。
-![](https://i.imgur.com/yXpRQSq.png)
-
 7. 請依照您的喜好與標準美化系統介面, 色彩樣式不拘。
 
 
@@ -122,6 +117,4 @@ EX.頁面上的「Team」欄位請顯示json資料中的team_acronym ...，以�
 2. 不限制使用的函式庫及程式編寫方式
 3. 程式需可執行，並提供簡單的程式說明及架設文件
 
-----
-project完成後請將project及相關文件打包寄至 rick.chen@lndata.com<br>
-Please send back your project and document to rick.chen@lndata.com
+

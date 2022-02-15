@@ -67,7 +67,7 @@
 players.json內為nba球員名單，請以此份資料，搭配文件中的示意圖，以「React.js + ES6」實作一個球員名單查詢系統。
 
 ### 系統介面佈局
-1. Header：左邊顯示LnData的logo(https://www.lndata.com/images/logo/logo_160.png)，右邊顯示Avatar示意圖
+1. Header：左邊顯示的logo，右邊顯示Avatar示意圖
 2. Menu選單：顯示「Player List」功能
 3. Main Content：主畫面中有搜尋條件及表格兩個區塊，在搜尋條件中設定搜尋條件後送出，表格內會顯示相對應的資料。
 
